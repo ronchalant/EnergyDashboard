@@ -1,11 +1,11 @@
-Step 3: Create a dashboard for energy consumption data (15.12.2023-12.01.2024)
+**Step 3: Create a dashboard for energy consumption data (15.12.2023-12.01.2024)**
 
-Task A:
+*Task A:*
 
 1. Make a (simple) Dashboard to visualise your energy data in a meaningful (or experimental) way using https://d3js.org/.
 2. You can use a "standard" timeline, but we highly encourage you to be creative! (see also the d3js examples on https://observablehq.com/@d3/gallery).
 
-Task B:
+*Task B:*
 
 1. We have the following situation: The territory of Europe (excluding the Russian Federation) has 3 time zones – Western European Time or GMT (Portugal, UK, Ireland and Island), 
 Central European Time or GMT+1 (most Central European countries); and Eastern European Time or GMT+2 (Finland, Estonia, Latvia, Lithuania, Belarus, Ukraine, Moldova, Romania, 
@@ -25,4 +25,4 @@ you will have a challenge unifying energy consumption data for the same time sli
    5. Extend your dashboard with a simple user interface and visualize the time zone differences 
    within the data. 
 
-   Submit your code as a HTML file to Gitlab for this step (no submssion required on Moodle).
+   *Submit your code as a HTML file to Gitlab for this step (no submssion required on Moodle).*
