@@ -33,10 +33,10 @@ package org.example;
  *    different data points are highlighted within those time gaps
  *    5. Extend your dashboard with a simple user interface and visualize the time zone differences
  *    within the data.
- *
+ * <p>
  *    Submit your code as a HTML file to Gitlab for this step (no submssion required on Moodle).
  */
-public class App {
+public class EnergyDashboard {
     public static void main( String[] args ) {
         System.out.println( "Hello World!" );
     }
