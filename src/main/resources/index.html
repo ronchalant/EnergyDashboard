@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Data Dashboard</title>
+</head>
+<body>
+
+<h1>Energy Data Dashboard</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Timestamp</th>
+        <th>Energy Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="data : ${energyDataList}">
+        <td th:text="${data.timestamp}"></td>
+        <td th:text="${data.energyValue}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
