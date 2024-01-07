@@ -1,4 +1,11 @@
-package org.example;
+package org.example.entity;
+
+import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 /**
  * Step 3: Create a dashboard for energy consumption data (15.12.2023-12.01.2024)
@@ -36,8 +43,21 @@ package org.example;
  * <p>
  *    Submit your code as a HTML file to Gitlab for this step (no submssion required on Moodle).
  */
+
+// EnergyDashboard.java (Model class representing energy data)
+// An Energy Dashboard Entity
+/**
+ * A simple entity class representing an energy data.
+ * This class will be used to model the data in the database.
+ */
+@Entity
 public class EnergyDashboard {
-    public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private LocalDateTime timestamp;
+    private double energyValue;
+
+    // getters and setters
 }

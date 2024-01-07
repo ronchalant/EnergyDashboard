@@ -26,3 +26,13 @@ you will have a challenge unifying energy consumption data for the same time sli
    within the data. 
 
    *Submit your code as a HTML file to Gitlab for this step (no submssion required on Moodle).*
+
+==============================================================================================
+
+To Run Spring Boot application. 
+Visit http://localhost:8080/dashboard in the web browser to see the energy data dashboard.
+
+This example provides a basic setup. Depending on the specific requirements and 
+the data visualization libraries you want to use, you may need to extend this example further. 
+Consider using JavaScript libraries like Chart.js or D3.js for more advanced and interactive 
+visualizations on the frontend.
