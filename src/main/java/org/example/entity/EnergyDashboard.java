@@ -55,11 +55,11 @@ public class EnergyDashboard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private LocalDateTime timestamp;
     private double energyValue;
 
-    // getters and setters
+    // Press Alt + Insert (or right-click and choose "Generate") to open the Generate menu.
+    // and add ALL getters and setters at once.
     public Long getId() {
         return id;
     }
