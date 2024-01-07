@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.entity.EnergyDashboard;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.example.repository.EnergyDashboardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,14 @@ public class EnergyDashboardService {
 
     public List<EnergyDashboard> getAllEnergyData() {
         return energyDashboardRepository.findAll();
+    }
+
+    public List<EnergyDashboard> getByTimestampAfter(LocalDateTime timestamp) {
+        return energyDashboardRepository.findByTimestampAfter(timestamp);
+    }
+
+    public List<EnergyDashboard> getByTimestampBetween(LocalDateTime start,
+                                                       LocalDateTime end) {
+        return energyDashboardRepository.findByTimestampBetween(start, end);
     }
 }

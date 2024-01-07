@@ -2,16 +2,22 @@ package org.example.controller;
 
 import org.example.entity.EnergyDashboard;
 import org.example.service.EnergyDashboardService;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * Create a controller to handle HTTP requests.
  * This controller will serve as the backend for the dashboard.
  */
-@Controller
+@RestController
+@RequestMapping("/energy")
 public class DashboardController {
 
     private final EnergyDashboardService energyDashboardService;
@@ -38,5 +44,21 @@ public class DashboardController {
         List<EnergyDashboard> energyDashboardList = energyDashboardService.getAllEnergyData();
         model.addAttribute("energyDashboardList", energyDashboardList);
         return "dashboard";
+    }
+
+    @GetMapping("/byTimestampAfter")
+    public ResponseEntity<List<EnergyDashboard>> getByTimestampAfter(@RequestParam("timestamp")
+                                                                         LocalDateTime timestamp) {
+        List<EnergyDashboard> result = energyDashboardService.getByTimestampAfter(timestamp);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/byTimestampBetween")
+    public ResponseEntity<List<EnergyDashboard>> getByTimestampBetween(@RequestParam("start")
+                                                                       LocalDateTime start,
+                                                                       @RequestParam("end")
+                                                                       LocalDateTime end) {
+        List<EnergyDashboard> result = energyDashboardService.getByTimestampBetween(start, end);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
