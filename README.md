@@ -27,7 +27,7 @@ you will have a challenge unifying energy consumption data for the same time sli
 
    *Submit your code as a HTML file to Gitlab for this step (no submssion required on Moodle).*
 
-==============================================================================================
+===========================================================================
 
 To Run Spring Boot application. 
 Visit http://localhost:8080/dashboard in the web browser to see the energy data dashboard.
