@@ -60,4 +60,27 @@ public class EnergyDashboard {
     private double energyValue;
 
     // getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public double getEnergyValue() {
+        return energyValue;
+    }
+
+    public void setEnergyValue(double energyValue) {
+        this.energyValue = energyValue;
+    }
 }
