@@ -29,7 +29,7 @@ public class DashboardController {
      * The EnergyDashboardService is responsible for encapsulating business logic and
      * interacting with the repository, while the repository (EnergyDashboardRepository) is focused on
      * data access and persistence.
-     *
+     * <p>
      * Each layer has a specific responsibility in the application, and adhering to these principles helps
      * create a clean and maintainable codebase.
      */
