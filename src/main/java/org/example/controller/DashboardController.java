@@ -61,4 +61,26 @@ public class DashboardController {
         List<EnergyDashboard> result = energyDashboardService.getByTimestampBetween(start, end);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @GetMapping("/byEnergyValueGreaterThanEqual")
+    public ResponseEntity<List<EnergyDashboard>> getByEnergyValueGreaterThanEqual(@RequestParam("minValue")
+                                                                                      double minValue) {
+        List<EnergyDashboard> result = energyDashboardService.getByEnergyValueGreaterThanEqual(minValue);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/byTimestampAndEnergyValue")
+    public ResponseEntity<List<EnergyDashboard>> getByTimestampAndEnergyValue(@RequestParam("timestamp")
+                                                                                  LocalDateTime timestamp,
+                                                                              @RequestParam("energyValue")
+                                                                              double energyValue) {
+        List<EnergyDashboard> result = energyDashboardService.getByTimestampAndEnergyValue(timestamp, energyValue);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/byOrderByTimestampDesc")
+    public ResponseEntity<List<EnergyDashboard>> getByOrderByTimestampDesc() {
+        List<EnergyDashboard> result = energyDashboardService.getByOrderByTimestampDesc();
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }

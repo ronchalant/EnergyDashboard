@@ -33,4 +33,17 @@ public class EnergyDashboardService {
                                                        LocalDateTime end) {
         return energyDashboardRepository.findByTimestampBetween(start, end);
     }
+
+    public List<EnergyDashboard> getByEnergyValueGreaterThanEqual(double minValue) {
+        return energyDashboardRepository.findByEnergyValueGreaterThanEqual(minValue);
+    }
+
+    public List<EnergyDashboard> getByTimestampAndEnergyValue(LocalDateTime timestamp,
+                                                              double energyValue) {
+        return energyDashboardRepository.findByTimestampAndEnergyValue(timestamp, energyValue);
+    }
+
+    public List<EnergyDashboard> getByOrderByTimestampDesc() {
+        return energyDashboardRepository.findByOrderByTimestampDesc();
+    }
 }
