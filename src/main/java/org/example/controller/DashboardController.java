@@ -20,6 +20,19 @@ public class DashboardController {
         this.energyDashboardService = energyDashboardService;
     }
 
+    /**
+     *
+     * @param model
+     * @return
+     *
+     * Keep the showDashboard method inside DashboardController as it deals with web-related concerns.
+     * The EnergyDashboardService is responsible for encapsulating business logic and
+     * interacting with the repository, while the repository (EnergyDashboardRepository) is focused on
+     * data access and persistence.
+     *
+     * Each layer has a specific responsibility in the application, and adhering to these principles helps
+     * create a clean and maintainable codebase.
+     */
     @GetMapping("/dashboard")
     public String showDashboard(Model model) {
         List<EnergyDashboard> energyDashboardList = energyDashboardService.getAllEnergyData();
