@@ -22,8 +22,8 @@ public class DashboardController {
 
     @GetMapping("/dashboard")
     public String showDashboard(Model model) {
-        List<EnergyDashboard> energyDataList = energyDashboardService.getAllEnergyData();
-        model.addAttribute("energyDashboardList", energyDataList);
+        List<EnergyDashboard> energyDashboardList = energyDashboardService.getAllEnergyData();
+        model.addAttribute("energyDashboardList", energyDashboardList);
         return "dashboard";
     }
 }
