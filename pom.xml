@@ -49,7 +49,6 @@
         <version>6.2.7.Final</version>
       </dependency>
 
-
     <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
     <dependency>
       <groupId>org.springframework.data</groupId>
