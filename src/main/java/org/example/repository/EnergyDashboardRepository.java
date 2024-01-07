@@ -9,6 +9,7 @@ import java.util.List;
  * Create a repository interface that extends JpaRepository to interact with the database.
  */
 public interface EnergyDashboardRepository extends JpaRepository<EnergyDashboard, Long> {
+
     // Custom queries can be added if needed
 
     /**
