@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,39 +9,77 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-
 <h1>Energy Data Dashboard</h1>
+
 <!-- SVG container for D3.js visualization -->
 <svg id="visualization" width="800" height="600"></svg>
 
 <!-- JavaScript code for D3.js visualization -->
 <script>
-    // Your D3.js code goes here
+    // Parse XML data
+    d3.xml("your_data.xml").then(function(data) {
+        // Extract data from XML nodes
+        const consumos = Array.from(data.documentElement.getElementsByTagName("consumos"));
+
+        // Convert XML data to JavaScript objects
+        const consumosData = consumos.map(consumo => {
+            return {
+                CUPS: consumo.querySelector("CUPS").textContent,
+                Fecha: consumo.querySelector("Fecha").textContent,
+                Hora: consumo.querySelector("Hora").textContent,
+                Consumo_kWh: parseFloat(consumo.querySelector("Consumo_kWh").textContent.replace(",", ".")),
+                metodo_obtencion: consumo.querySelector("metodo_obtencion").textContent
+            };
+        });
+
+        // Use D3.js to create visualization
+        const svg = d3.select("#visualization");
+
+        // Example: Create a bar chart of Consumo_kWh over Hora
+        const margin = { top: 20, right: 20, bottom: 50, left: 50 };
+        const width = +svg.attr("width") - margin.left - margin.right;
+        const height = +svg.attr("height") - margin.top - margin.bottom;
+
+        const x = d3.scaleBand()
+            .domain(consumosData.map(d => d.Hora))
+            .range([margin.left, width - margin.right])
+            .padding(0.1);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(consumosData, d => d.Consumo_kWh)]).nice()
+            .range([height - margin.bottom, margin.top]);
+
+        svg.append("g")
+            .attr("transform", `translate(0,${height - margin.bottom})`)
+            .call(d3.axisBottom(x));
+
+        svg.append("g")
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y));
+
+        svg.selectAll("rect")
+            .data(consumosData)
+            .enter().append("rect")
+            .attr("x", d => x(d.Hora))
+            .attr("y", d => y(d.Consumo_kWh))
+            .attr("width", x.bandwidth())
+            .attr("height", d => y(0) - y(d.Consumo_kWh))
+            .attr("fill", "steelblue");
+
+        svg.append("text")
+            .attr("transform", `translate(${width / 2},${height})`)
+            .style("text-anchor", "middle")
+            .text("Hora");
+
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0)
+            .attr("x", 0 - height / 2)
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Consumo_kWh");
+    });
 </script>
-
-<!--<script src="lineChartWithAnnotation.js" type="module"></script>
-<script>
-    window.onload = function() {
-        addXmlFileChangeInput();
-        addOffsetInput();
-        generateAndDrawDataCharts();
-    }
-</script>-->
-
-<!--<table>
-    <thead>
-    <tr>
-        <th>Timestamp</th>
-        <th>Energy Value</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="data : ${energyDashboardList}">
-        <td th:text="${data.timestamp}"></td>
-        <td th:text="${data.energyValue}"></td>
-    </tr>
-    </tbody>
-</table>-->
 
 </body>
 </html>
